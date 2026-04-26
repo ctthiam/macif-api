@@ -7,24 +7,24 @@ export declare class CategoriesController {
             products: number;
         };
     } & {
-        id: number;
         name: string;
+        id: number;
         createdAt: Date;
         shopId: number;
         icon: string | null;
         color: string | null;
     })[]>;
     create(user: any, dto: CategoryDto): import("@prisma/client").Prisma.Prisma__CategoryClient<{
-        id: number;
         name: string;
+        id: number;
         createdAt: Date;
         shopId: number;
         icon: string | null;
         color: string | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
     update(user: any, id: number, dto: CategoryDto): Promise<{
-        id: number;
         name: string;
+        id: number;
         createdAt: Date;
         shopId: number;
         icon: string | null;

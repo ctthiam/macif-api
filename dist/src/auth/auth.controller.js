@@ -26,7 +26,6 @@ const COOKIE_OPTS = {
     path: '/',
 };
 let AuthController = class AuthController {
-    auth;
     constructor(auth) {
         this.auth = auth;
     }

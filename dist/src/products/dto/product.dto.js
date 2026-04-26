@@ -13,15 +13,6 @@ exports.AdjustStockDto = exports.UpdateProductDto = exports.CreateProductDto = v
 const class_validator_1 = require("class-validator");
 const class_transformer_1 = require("class-transformer");
 class CreateProductDto {
-    name;
-    categoryId;
-    reference;
-    unit;
-    buyPrice;
-    sellPrice;
-    sellPriceGros;
-    stockQty;
-    stockAlert;
 }
 exports.CreateProductDto = CreateProductDto;
 __decorate([
@@ -81,8 +72,6 @@ class UpdateProductDto extends CreateProductDto {
 }
 exports.UpdateProductDto = UpdateProductDto;
 class AdjustStockDto {
-    quantity;
-    note;
 }
 exports.AdjustStockDto = AdjustStockDto;
 __decorate([

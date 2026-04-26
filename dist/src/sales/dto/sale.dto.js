@@ -13,9 +13,6 @@ exports.CreateSaleDto = exports.SaleItemDto = void 0;
 const class_validator_1 = require("class-validator");
 const class_transformer_1 = require("class-transformer");
 class SaleItemDto {
-    productId;
-    quantity;
-    unitPrice;
 }
 exports.SaleItemDto = SaleItemDto;
 __decorate([
@@ -33,13 +30,6 @@ __decorate([
     __metadata("design:type", Number)
 ], SaleItemDto.prototype, "unitPrice", void 0);
 class CreateSaleDto {
-    customerId;
-    items;
-    paymentMethod;
-    paidAmount;
-    discount;
-    notes;
-    dueDate;
 }
 exports.CreateSaleDto = CreateSaleDto;
 __decorate([

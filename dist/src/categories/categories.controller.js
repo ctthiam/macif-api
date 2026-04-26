@@ -18,7 +18,6 @@ const jwt_auth_guard_1 = require("../auth/guards/jwt-auth.guard");
 const shop_decorator_1 = require("../common/decorators/shop.decorator");
 const categories_service_1 = require("./categories.service");
 let CategoriesController = class CategoriesController {
-    categories;
     constructor(categories) {
         this.categories = categories;
     }

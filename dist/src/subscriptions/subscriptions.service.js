@@ -16,8 +16,6 @@ const prisma_service_1 = require("../prisma/prisma.service");
 const SUBSCRIPTION_PRICE = 10000;
 const TRIAL_DAYS = 30;
 let SubscriptionsService = class SubscriptionsService {
-    prisma;
-    config;
     constructor(prisma, config) {
         this.prisma = prisma;
         this.config = config;

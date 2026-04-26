@@ -19,7 +19,6 @@ const shop_decorator_1 = require("../common/decorators/shop.decorator");
 const credits_service_1 = require("./credits.service");
 const credit_dto_1 = require("./dto/credit.dto");
 let CreditsController = class CreditsController {
-    credits;
     constructor(credits) {
         this.credits = credits;
     }

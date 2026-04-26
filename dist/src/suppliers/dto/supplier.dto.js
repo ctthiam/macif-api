@@ -12,9 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateSupplierDto = exports.CreateSupplierDto = void 0;
 const class_validator_1 = require("class-validator");
 class CreateSupplierDto {
-    name;
-    phone;
-    address;
 }
 exports.CreateSupplierDto = CreateSupplierDto;
 __decorate([
@@ -33,9 +30,6 @@ __decorate([
     __metadata("design:type", String)
 ], CreateSupplierDto.prototype, "address", void 0);
 class UpdateSupplierDto {
-    name;
-    phone;
-    address;
 }
 exports.UpdateSupplierDto = UpdateSupplierDto;
 __decorate([

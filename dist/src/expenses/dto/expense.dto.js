@@ -13,12 +13,6 @@ exports.CreateExpenseDto = void 0;
 const class_validator_1 = require("class-validator");
 const CATEGORIES = ['rent', 'electricity', 'water', 'salary', 'transport', 'supplier', 'other'];
 class CreateExpenseDto {
-    category;
-    amount;
-    description;
-    date;
-    isRecurring;
-    recurDay;
 }
 exports.CreateExpenseDto = CreateExpenseDto;
 __decorate([

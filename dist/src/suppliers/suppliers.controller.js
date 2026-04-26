@@ -19,7 +19,6 @@ const shop_decorator_1 = require("../common/decorators/shop.decorator");
 const suppliers_service_1 = require("./suppliers.service");
 const supplier_dto_1 = require("./dto/supplier.dto");
 let SuppliersController = class SuppliersController {
-    suppliers;
     constructor(suppliers) {
         this.suppliers = suppliers;
     }

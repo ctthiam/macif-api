@@ -13,9 +13,6 @@ exports.CreatePurchaseDto = exports.PurchaseItemDto = void 0;
 const class_validator_1 = require("class-validator");
 const class_transformer_1 = require("class-transformer");
 class PurchaseItemDto {
-    productId;
-    quantity;
-    unitPrice;
 }
 exports.PurchaseItemDto = PurchaseItemDto;
 __decorate([
@@ -34,12 +31,6 @@ __decorate([
     __metadata("design:type", Number)
 ], PurchaseItemDto.prototype, "unitPrice", void 0);
 class CreatePurchaseDto {
-    supplierId;
-    items;
-    paidAmount;
-    paymentMethod;
-    deliveryDate;
-    notes;
 }
 exports.CreatePurchaseDto = CreatePurchaseDto;
 __decorate([

@@ -18,7 +18,6 @@ const jwt_auth_guard_1 = require("../auth/guards/jwt-auth.guard");
 const shop_decorator_1 = require("../common/decorators/shop.decorator");
 const reports_service_1 = require("./reports.service");
 let ReportsController = class ReportsController {
-    reports;
     constructor(reports) {
         this.reports = reports;
     }

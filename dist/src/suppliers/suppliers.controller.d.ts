@@ -8,9 +8,9 @@ export declare class SuppliersController {
             purchases: number;
         };
     } & {
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
         address: string | null;
@@ -30,29 +30,29 @@ export declare class SuppliersController {
                 };
             } & {
                 id: number;
-                productId: number;
                 quantity: import("@prisma/client/runtime/library").Decimal;
                 unitPrice: import("@prisma/client/runtime/library").Decimal;
+                productId: number;
                 totalPrice: import("@prisma/client/runtime/library").Decimal;
                 purchaseId: number;
             })[];
         } & {
             id: number;
             createdAt: Date;
-            userId: number;
             shopId: number;
+            userId: number;
             reference: string;
-            totalAmount: import("@prisma/client/runtime/library").Decimal;
             paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
             paidAmount: import("@prisma/client/runtime/library").Decimal;
             notes: string | null;
+            totalAmount: import("@prisma/client/runtime/library").Decimal;
             supplierId: number | null;
             deliveryDate: Date | null;
         })[];
     } & {
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
         address: string | null;
@@ -61,9 +61,9 @@ export declare class SuppliersController {
         debtBalance: import("@prisma/client/runtime/library").Decimal;
     }>;
     create(user: any, dto: CreateSupplierDto): import("@prisma/client").Prisma.Prisma__SupplierClient<{
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
         address: string | null;
@@ -72,9 +72,9 @@ export declare class SuppliersController {
         debtBalance: import("@prisma/client/runtime/library").Decimal;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
     update(user: any, id: number, dto: UpdateSupplierDto): Promise<{
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
         address: string | null;
@@ -83,9 +83,9 @@ export declare class SuppliersController {
         debtBalance: import("@prisma/client/runtime/library").Decimal;
     }>;
     remove(user: any, id: number): Promise<{
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
         address: string | null;

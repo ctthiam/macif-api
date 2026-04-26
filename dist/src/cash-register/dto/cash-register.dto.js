@@ -12,8 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CloseCashRegisterDto = exports.OpenCashRegisterDto = void 0;
 const class_validator_1 = require("class-validator");
 class OpenCashRegisterDto {
-    openingAmount;
-    notes;
 }
 exports.OpenCashRegisterDto = OpenCashRegisterDto;
 __decorate([
@@ -27,8 +25,6 @@ __decorate([
     __metadata("design:type", String)
 ], OpenCashRegisterDto.prototype, "notes", void 0);
 class CloseCashRegisterDto {
-    closingAmount;
-    notes;
 }
 exports.CloseCashRegisterDto = CloseCashRegisterDto;
 __decorate([

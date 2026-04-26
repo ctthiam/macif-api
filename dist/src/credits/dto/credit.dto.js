@@ -12,9 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PayCreditDto = void 0;
 const class_validator_1 = require("class-validator");
 class PayCreditDto {
-    amount;
-    paymentMethod;
-    note;
 }
 exports.PayCreditDto = PayCreditDto;
 __decorate([

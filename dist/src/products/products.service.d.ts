@@ -10,16 +10,16 @@ export declare class ProductsService {
         limit?: number;
     }): Promise<({
         category: {
-            id: number;
             name: string;
+            id: number;
             createdAt: Date;
             shopId: number;
             icon: string | null;
             color: string | null;
         } | null;
     } & {
-        id: number;
         name: string;
+        id: number;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -37,16 +37,16 @@ export declare class ProductsService {
     })[]>;
     findLowStock(shopId: number): Promise<({
         category: {
-            id: number;
             name: string;
+            id: number;
             createdAt: Date;
             shopId: number;
             icon: string | null;
             color: string | null;
         } | null;
     } & {
-        id: number;
         name: string;
+        id: number;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -64,8 +64,8 @@ export declare class ProductsService {
     })[]>;
     findOne(shopId: number, id: number): Promise<{
         category: {
-            id: number;
             name: string;
+            id: number;
             createdAt: Date;
             shopId: number;
             icon: string | null;
@@ -78,19 +78,19 @@ export declare class ProductsService {
         } & {
             id: number;
             createdAt: Date;
-            userId: number;
             shopId: number;
-            productId: number;
-            type: import("@prisma/client").$Enums.StockMovementType;
+            userId: number;
             quantity: import("@prisma/client/runtime/library").Decimal;
+            note: string | null;
+            type: import("@prisma/client").$Enums.StockMovementType;
             unitPrice: import("@prisma/client/runtime/library").Decimal | null;
             referenceType: string | null;
             referenceId: number | null;
-            note: string | null;
+            productId: number;
         })[];
     } & {
-        id: number;
         name: string;
+        id: number;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -108,16 +108,16 @@ export declare class ProductsService {
     }>;
     create(shopId: number, userId: number, dto: CreateProductDto): Promise<{
         category: {
-            id: number;
             name: string;
+            id: number;
             createdAt: Date;
             shopId: number;
             icon: string | null;
             color: string | null;
         } | null;
     } & {
-        id: number;
         name: string;
+        id: number;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -135,16 +135,16 @@ export declare class ProductsService {
     }>;
     update(shopId: number, id: number, dto: UpdateProductDto): Promise<{
         category: {
-            id: number;
             name: string;
+            id: number;
             createdAt: Date;
             shopId: number;
             icon: string | null;
             color: string | null;
         } | null;
     } & {
-        id: number;
         name: string;
+        id: number;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -162,8 +162,8 @@ export declare class ProductsService {
     }>;
     softDelete(shopId: number, id: number): Promise<void>;
     adjustStock(shopId: number, id: number, userId: number, dto: AdjustStockDto): Promise<{
-        id: number;
         name: string;
+        id: number;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;

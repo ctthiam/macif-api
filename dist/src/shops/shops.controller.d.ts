@@ -9,9 +9,9 @@ export declare class ShopsController {
             products: number;
         };
     } & {
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -26,9 +26,9 @@ export declare class ShopsController {
         planExpiresAt: Date | null;
     }>;
     updateShop(id: number, user: any, dto: UpdateShopDto): Promise<{
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -44,24 +44,24 @@ export declare class ShopsController {
     }>;
     getTeam(id: number): Promise<({
         user: {
-            id: number;
             name: string;
             phone: string;
+            id: number;
             isActive: boolean;
             lastLoginAt: Date | null;
         };
     } & {
         id: number;
         createdAt: Date;
-        userId: number;
         shopId: number;
+        userId: number;
         role: import("@prisma/client").$Enums.UserRole;
     })[]>;
     deactivateMember(id: number, memberId: number, user: any): Promise<{
-        id: number;
         name: string;
         phone: string;
         email: string | null;
+        id: number;
         passwordHash: string;
         pinHash: string | null;
         isActive: boolean;

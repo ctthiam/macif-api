@@ -12,10 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateCustomerDto = exports.CreateCustomerDto = void 0;
 const class_validator_1 = require("class-validator");
 class CreateCustomerDto {
-    name;
-    phone;
-    type;
-    address;
 }
 exports.CreateCustomerDto = CreateCustomerDto;
 __decorate([

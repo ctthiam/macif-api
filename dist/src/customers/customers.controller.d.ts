@@ -4,9 +4,9 @@ export declare class CustomersController {
     private customers;
     constructor(customers: CustomersService);
     findAll(user: any, search?: string): import("@prisma/client").Prisma.PrismaPromise<{
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
         address: string | null;
@@ -25,26 +25,26 @@ export declare class CustomersController {
                 };
             } & {
                 id: number;
-                productId: number;
                 quantity: import("@prisma/client/runtime/library").Decimal;
                 unitPrice: import("@prisma/client/runtime/library").Decimal;
-                saleId: number;
+                productId: number;
                 totalPrice: import("@prisma/client/runtime/library").Decimal;
+                saleId: number;
             })[];
         } & {
             id: number;
             createdAt: Date;
-            userId: number;
             shopId: number;
+            userId: number;
             reference: string;
             customerId: number | null;
-            totalAmount: import("@prisma/client/runtime/library").Decimal;
-            discount: import("@prisma/client/runtime/library").Decimal;
-            netAmount: import("@prisma/client/runtime/library").Decimal;
             paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
             paidAmount: import("@prisma/client/runtime/library").Decimal;
-            creditAmount: import("@prisma/client/runtime/library").Decimal;
+            discount: import("@prisma/client/runtime/library").Decimal;
             notes: string | null;
+            totalAmount: import("@prisma/client/runtime/library").Decimal;
+            netAmount: import("@prisma/client/runtime/library").Decimal;
+            creditAmount: import("@prisma/client/runtime/library").Decimal;
         })[];
         credits: {
             id: number;
@@ -53,17 +53,17 @@ export declare class CustomersController {
             shopId: number;
             customerId: number;
             notes: string | null;
+            dueDate: Date | null;
             saleId: number | null;
             amountTotal: import("@prisma/client/runtime/library").Decimal;
             amountPaid: import("@prisma/client/runtime/library").Decimal;
             amountRemaining: import("@prisma/client/runtime/library").Decimal;
-            dueDate: Date | null;
             status: import("@prisma/client").$Enums.CreditStatus;
         }[];
     } & {
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
         address: string | null;
@@ -75,9 +75,9 @@ export declare class CustomersController {
         creditBalance: import("@prisma/client/runtime/library").Decimal;
     }>;
     create(user: any, dto: CreateCustomerDto): import("@prisma/client").Prisma.Prisma__CustomerClient<{
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
         address: string | null;
@@ -89,9 +89,9 @@ export declare class CustomersController {
         creditBalance: import("@prisma/client/runtime/library").Decimal;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
     update(user: any, id: number, dto: UpdateCustomerDto): Promise<{
-        id: number;
         name: string;
         phone: string | null;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
         address: string | null;

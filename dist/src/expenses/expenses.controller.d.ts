@@ -4,14 +4,14 @@ export declare class ExpensesController {
     private expenses;
     constructor(expenses: ExpensesService);
     create(user: any, dto: CreateExpenseDto): Promise<{
+        category: import("@prisma/client").$Enums.ExpenseCategory;
         id: number;
         createdAt: Date;
-        userId: number;
         shopId: number;
-        amount: import("@prisma/client/runtime/library").Decimal;
+        userId: number;
         date: Date;
-        category: import("@prisma/client").$Enums.ExpenseCategory;
         description: string | null;
+        amount: import("@prisma/client/runtime/library").Decimal;
         isRecurring: boolean;
         recurDay: number | null;
     }>;
@@ -21,14 +21,14 @@ export declare class ExpensesController {
                 name: string;
             };
         } & {
+            category: import("@prisma/client").$Enums.ExpenseCategory;
             id: number;
             createdAt: Date;
-            userId: number;
             shopId: number;
-            amount: import("@prisma/client/runtime/library").Decimal;
+            userId: number;
             date: Date;
-            category: import("@prisma/client").$Enums.ExpenseCategory;
             description: string | null;
+            amount: import("@prisma/client/runtime/library").Decimal;
             isRecurring: boolean;
             recurDay: number | null;
         })[];
@@ -38,14 +38,14 @@ export declare class ExpensesController {
         totalAmount: number;
     }>;
     remove(user: any, id: number): Promise<{
+        category: import("@prisma/client").$Enums.ExpenseCategory;
         id: number;
         createdAt: Date;
-        userId: number;
         shopId: number;
-        amount: import("@prisma/client/runtime/library").Decimal;
+        userId: number;
         date: Date;
-        category: import("@prisma/client").$Enums.ExpenseCategory;
         description: string | null;
+        amount: import("@prisma/client/runtime/library").Decimal;
         isRecurring: boolean;
         recurDay: number | null;
     }>;

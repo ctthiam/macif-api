@@ -19,7 +19,6 @@ const shop_decorator_1 = require("../common/decorators/shop.decorator");
 const cash_register_service_1 = require("./cash-register.service");
 const cash_register_dto_1 = require("./dto/cash-register.dto");
 let CashRegisterController = class CashRegisterController {
-    cashRegister;
     constructor(cashRegister) {
         this.cashRegister = cashRegister;
     }

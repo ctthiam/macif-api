@@ -9,14 +9,14 @@ export declare class CashRegisterService {
         totalExpenses: number;
         theoretical: number;
         user: {
-            id: number;
             name: string;
+            id: number;
         };
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
         shopId: number;
+        userId: number;
         notes: string | null;
         status: import("@prisma/client").$Enums.CashRegisterStatus;
         date: Date;
@@ -29,8 +29,8 @@ export declare class CashRegisterService {
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
         shopId: number;
+        userId: number;
         notes: string | null;
         status: import("@prisma/client").$Enums.CashRegisterStatus;
         date: Date;
@@ -43,8 +43,8 @@ export declare class CashRegisterService {
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
         shopId: number;
+        userId: number;
         notes: string | null;
         status: import("@prisma/client").$Enums.CashRegisterStatus;
         date: Date;
@@ -61,8 +61,8 @@ export declare class CashRegisterService {
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
         shopId: number;
+        userId: number;
         notes: string | null;
         status: import("@prisma/client").$Enums.CashRegisterStatus;
         date: Date;

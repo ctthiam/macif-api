@@ -49,9 +49,6 @@ const config_1 = require("@nestjs/config");
 const bcrypt = __importStar(require("bcrypt"));
 const prisma_service_1 = require("../prisma/prisma.service");
 let AuthService = class AuthService {
-    prisma;
-    jwt;
-    config;
     constructor(prisma, jwt, config) {
         this.prisma = prisma;
         this.jwt = jwt;

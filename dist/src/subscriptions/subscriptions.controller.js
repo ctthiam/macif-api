@@ -18,7 +18,6 @@ const jwt_auth_guard_1 = require("../auth/guards/jwt-auth.guard");
 const shop_decorator_1 = require("../common/decorators/shop.decorator");
 const subscriptions_service_1 = require("./subscriptions.service");
 let SubscriptionsController = class SubscriptionsController {
-    subscriptions;
     constructor(subscriptions) {
         this.subscriptions = subscriptions;
     }

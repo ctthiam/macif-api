@@ -9,13 +9,13 @@ export declare class PurchasesService {
         limit?: number;
     }): Promise<{
         items: ({
-            supplier: {
-                id: number;
-                name: string;
-            } | null;
             user: {
                 name: string;
             };
+            supplier: {
+                name: string;
+                id: number;
+            } | null;
             items: ({
                 product: {
                     name: string;
@@ -23,22 +23,22 @@ export declare class PurchasesService {
                 };
             } & {
                 id: number;
-                productId: number;
                 quantity: import("@prisma/client/runtime/library").Decimal;
                 unitPrice: import("@prisma/client/runtime/library").Decimal;
+                productId: number;
                 totalPrice: import("@prisma/client/runtime/library").Decimal;
                 purchaseId: number;
             })[];
         } & {
             id: number;
             createdAt: Date;
-            userId: number;
             shopId: number;
+            userId: number;
             reference: string;
-            totalAmount: import("@prisma/client/runtime/library").Decimal;
             paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
             paidAmount: import("@prisma/client/runtime/library").Decimal;
             notes: string | null;
+            totalAmount: import("@prisma/client/runtime/library").Decimal;
             supplierId: number | null;
             deliveryDate: Date | null;
         })[];
@@ -47,14 +47,14 @@ export declare class PurchasesService {
         pages: number;
     }>;
     findOne(shopId: number, id: number): Promise<{
-        supplier: {
-            id: number;
-            name: string;
-            phone: string | null;
-        } | null;
         user: {
             name: string;
         };
+        supplier: {
+            name: string;
+            phone: string | null;
+            id: number;
+        } | null;
         items: ({
             product: {
                 name: string;
@@ -62,22 +62,22 @@ export declare class PurchasesService {
             };
         } & {
             id: number;
-            productId: number;
             quantity: import("@prisma/client/runtime/library").Decimal;
             unitPrice: import("@prisma/client/runtime/library").Decimal;
+            productId: number;
             totalPrice: import("@prisma/client/runtime/library").Decimal;
             purchaseId: number;
         })[];
     } & {
         id: number;
         createdAt: Date;
-        userId: number;
         shopId: number;
+        userId: number;
         reference: string;
-        totalAmount: import("@prisma/client/runtime/library").Decimal;
         paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
         paidAmount: import("@prisma/client/runtime/library").Decimal;
         notes: string | null;
+        totalAmount: import("@prisma/client/runtime/library").Decimal;
         supplierId: number | null;
         deliveryDate: Date | null;
     }>;
@@ -92,22 +92,22 @@ export declare class PurchasesService {
             };
         } & {
             id: number;
-            productId: number;
             quantity: import("@prisma/client/runtime/library").Decimal;
             unitPrice: import("@prisma/client/runtime/library").Decimal;
+            productId: number;
             totalPrice: import("@prisma/client/runtime/library").Decimal;
             purchaseId: number;
         })[];
     } & {
         id: number;
         createdAt: Date;
-        userId: number;
         shopId: number;
+        userId: number;
         reference: string;
-        totalAmount: import("@prisma/client/runtime/library").Decimal;
         paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
         paidAmount: import("@prisma/client/runtime/library").Decimal;
         notes: string | null;
+        totalAmount: import("@prisma/client/runtime/library").Decimal;
         supplierId: number | null;
         deliveryDate: Date | null;
     }>;

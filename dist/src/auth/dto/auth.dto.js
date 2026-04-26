@@ -12,11 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChangePasswordDto = exports.VerifyPinDto = exports.SetPinDto = exports.LoginDto = exports.RegisterDto = void 0;
 const class_validator_1 = require("class-validator");
 class RegisterDto {
-    name;
-    phone;
-    email;
-    password;
-    shopName;
 }
 exports.RegisterDto = RegisterDto;
 __decorate([
@@ -43,8 +38,6 @@ __decorate([
     __metadata("design:type", String)
 ], RegisterDto.prototype, "shopName", void 0);
 class LoginDto {
-    phone;
-    password;
 }
 exports.LoginDto = LoginDto;
 __decorate([
@@ -56,7 +49,6 @@ __decorate([
     __metadata("design:type", String)
 ], LoginDto.prototype, "password", void 0);
 class SetPinDto {
-    pin;
 }
 exports.SetPinDto = SetPinDto;
 __decorate([
@@ -65,7 +57,6 @@ __decorate([
     __metadata("design:type", String)
 ], SetPinDto.prototype, "pin", void 0);
 class VerifyPinDto {
-    pin;
 }
 exports.VerifyPinDto = VerifyPinDto;
 __decorate([
@@ -74,8 +65,6 @@ __decorate([
     __metadata("design:type", String)
 ], VerifyPinDto.prototype, "pin", void 0);
 class ChangePasswordDto {
-    currentPassword;
-    newPassword;
 }
 exports.ChangePasswordDto = ChangePasswordDto;
 __decorate([

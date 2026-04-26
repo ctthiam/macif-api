@@ -12,11 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateShopDto = void 0;
 const class_validator_1 = require("class-validator");
 class UpdateShopDto {
-    name;
-    phone;
-    address;
-    city;
-    primaryColor;
 }
 exports.UpdateShopDto = UpdateShopDto;
 __decorate([

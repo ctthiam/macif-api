@@ -14,9 +14,6 @@ const common_1 = require("@nestjs/common");
 const class_validator_1 = require("class-validator");
 const prisma_service_1 = require("../prisma/prisma.service");
 class CategoryDto {
-    name;
-    icon;
-    color;
 }
 exports.CategoryDto = CategoryDto;
 __decorate([
@@ -34,7 +31,6 @@ __decorate([
     __metadata("design:type", String)
 ], CategoryDto.prototype, "color", void 0);
 let CategoriesService = class CategoriesService {
-    prisma;
     constructor(prisma) {
         this.prisma = prisma;
     }
