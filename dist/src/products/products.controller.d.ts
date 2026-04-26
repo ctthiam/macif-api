@@ -5,16 +5,16 @@ export declare class ProductsController {
     constructor(products: ProductsService);
     findAll(user: any, categoryId?: string, lowStock?: string, search?: string, limit?: string): Promise<({
         category: {
-            name: string;
             id: number;
+            name: string;
             createdAt: Date;
             shopId: number;
             icon: string | null;
             color: string | null;
         } | null;
     } & {
-        name: string;
         id: number;
+        name: string;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -32,16 +32,16 @@ export declare class ProductsController {
     })[]>;
     findLowStock(user: any): Promise<({
         category: {
-            name: string;
             id: number;
+            name: string;
             createdAt: Date;
             shopId: number;
             icon: string | null;
             color: string | null;
         } | null;
     } & {
-        name: string;
         id: number;
+        name: string;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -59,8 +59,8 @@ export declare class ProductsController {
     })[]>;
     findOne(user: any, id: number): Promise<{
         category: {
-            name: string;
             id: number;
+            name: string;
             createdAt: Date;
             shopId: number;
             icon: string | null;
@@ -73,19 +73,19 @@ export declare class ProductsController {
         } & {
             id: number;
             createdAt: Date;
-            shopId: number;
             userId: number;
-            quantity: import("@prisma/client/runtime/library").Decimal;
-            note: string | null;
+            shopId: number;
+            productId: number;
             type: import("@prisma/client").$Enums.StockMovementType;
+            quantity: import("@prisma/client/runtime/library").Decimal;
             unitPrice: import("@prisma/client/runtime/library").Decimal | null;
             referenceType: string | null;
             referenceId: number | null;
-            productId: number;
+            note: string | null;
         })[];
     } & {
-        name: string;
         id: number;
+        name: string;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -103,16 +103,16 @@ export declare class ProductsController {
     }>;
     create(user: any, dto: CreateProductDto): Promise<{
         category: {
-            name: string;
             id: number;
+            name: string;
             createdAt: Date;
             shopId: number;
             icon: string | null;
             color: string | null;
         } | null;
     } & {
-        name: string;
         id: number;
+        name: string;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -130,16 +130,16 @@ export declare class ProductsController {
     }>;
     update(user: any, id: number, dto: UpdateProductDto): Promise<{
         category: {
-            name: string;
             id: number;
+            name: string;
             createdAt: Date;
             shopId: number;
             icon: string | null;
             color: string | null;
         } | null;
     } & {
-        name: string;
         id: number;
+        name: string;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
@@ -157,8 +157,8 @@ export declare class ProductsController {
     }>;
     softDelete(user: any, id: number): Promise<void>;
     adjustStock(user: any, id: number, dto: AdjustStockDto): Promise<{
-        name: string;
         id: number;
+        name: string;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;

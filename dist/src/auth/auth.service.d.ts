@@ -10,9 +10,9 @@ export declare class AuthService {
     register(dto: RegisterDto, ip: string): Promise<{
         user: any;
         shop: {
+            id: number;
             name: string;
             phone: string | null;
-            id: number;
             isActive: boolean;
             createdAt: Date;
             updatedAt: Date;
@@ -34,9 +34,9 @@ export declare class AuthService {
     login(dto: LoginDto, ip: string): Promise<{
         user: any;
         shop: {
+            id: number;
             name: string;
             phone: string | null;
-            id: number;
             isActive: boolean;
             createdAt: Date;
             updatedAt: Date;

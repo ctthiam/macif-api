@@ -4,14 +4,14 @@ export declare class ExpensesService {
     private prisma;
     constructor(prisma: PrismaService);
     create(shopId: number, userId: number, dto: CreateExpenseDto): Promise<{
-        category: import("@prisma/client").$Enums.ExpenseCategory;
         id: number;
         createdAt: Date;
-        shopId: number;
         userId: number;
-        date: Date;
-        description: string | null;
+        shopId: number;
         amount: import("@prisma/client/runtime/library").Decimal;
+        date: Date;
+        category: import("@prisma/client").$Enums.ExpenseCategory;
+        description: string | null;
         isRecurring: boolean;
         recurDay: number | null;
     }>;
@@ -27,14 +27,14 @@ export declare class ExpensesService {
                 name: string;
             };
         } & {
-            category: import("@prisma/client").$Enums.ExpenseCategory;
             id: number;
             createdAt: Date;
-            shopId: number;
             userId: number;
-            date: Date;
-            description: string | null;
+            shopId: number;
             amount: import("@prisma/client/runtime/library").Decimal;
+            date: Date;
+            category: import("@prisma/client").$Enums.ExpenseCategory;
+            description: string | null;
             isRecurring: boolean;
             recurDay: number | null;
         })[];
@@ -44,14 +44,14 @@ export declare class ExpensesService {
         totalAmount: number;
     }>;
     remove(shopId: number, id: number): Promise<{
-        category: import("@prisma/client").$Enums.ExpenseCategory;
         id: number;
         createdAt: Date;
-        shopId: number;
         userId: number;
-        date: Date;
-        description: string | null;
+        shopId: number;
         amount: import("@prisma/client/runtime/library").Decimal;
+        date: Date;
+        category: import("@prisma/client").$Enums.ExpenseCategory;
+        description: string | null;
         isRecurring: boolean;
         recurDay: number | null;
     }>;

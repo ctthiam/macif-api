@@ -19,10 +19,11 @@ const auth_service_1 = require("./auth.service");
 const auth_dto_1 = require("./dto/auth.dto");
 const jwt_auth_guard_1 = require("./guards/jwt-auth.guard");
 const shop_decorator_1 = require("../common/decorators/shop.decorator");
+const isProd = process.env.NODE_ENV === 'production';
 const COOKIE_OPTS = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: isProd,
+    sameSite: (isProd ? 'none' : 'lax'),
     path: '/',
 };
 let AuthController = class AuthController {

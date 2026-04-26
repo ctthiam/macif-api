@@ -11,26 +11,26 @@ export declare class SalesController {
             };
         } & {
             id: number;
+            productId: number;
             quantity: import("@prisma/client/runtime/library").Decimal;
             unitPrice: import("@prisma/client/runtime/library").Decimal;
-            productId: number;
-            totalPrice: import("@prisma/client/runtime/library").Decimal;
             saleId: number;
+            totalPrice: import("@prisma/client/runtime/library").Decimal;
         })[];
     } & {
         id: number;
         createdAt: Date;
-        shopId: number;
         userId: number;
+        shopId: number;
         reference: string;
         customerId: number | null;
+        totalAmount: import("@prisma/client/runtime/library").Decimal;
+        discount: import("@prisma/client/runtime/library").Decimal;
+        netAmount: import("@prisma/client/runtime/library").Decimal;
         paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
         paidAmount: import("@prisma/client/runtime/library").Decimal;
-        discount: import("@prisma/client/runtime/library").Decimal;
-        notes: string | null;
-        totalAmount: import("@prisma/client/runtime/library").Decimal;
-        netAmount: import("@prisma/client/runtime/library").Decimal;
         creditAmount: import("@prisma/client/runtime/library").Decimal;
+        notes: string | null;
     }>;
     findAll(user: any, startDate?: string, endDate?: string, paymentMethod?: string, userId?: string, limit?: string, page?: string): Promise<{
         items: ({
@@ -48,26 +48,26 @@ export declare class SalesController {
                 };
             } & {
                 id: number;
+                productId: number;
                 quantity: import("@prisma/client/runtime/library").Decimal;
                 unitPrice: import("@prisma/client/runtime/library").Decimal;
-                productId: number;
-                totalPrice: import("@prisma/client/runtime/library").Decimal;
                 saleId: number;
+                totalPrice: import("@prisma/client/runtime/library").Decimal;
             })[];
         } & {
             id: number;
             createdAt: Date;
-            shopId: number;
             userId: number;
+            shopId: number;
             reference: string;
             customerId: number | null;
+            totalAmount: import("@prisma/client/runtime/library").Decimal;
+            discount: import("@prisma/client/runtime/library").Decimal;
+            netAmount: import("@prisma/client/runtime/library").Decimal;
             paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
             paidAmount: import("@prisma/client/runtime/library").Decimal;
-            discount: import("@prisma/client/runtime/library").Decimal;
-            notes: string | null;
-            totalAmount: import("@prisma/client/runtime/library").Decimal;
-            netAmount: import("@prisma/client/runtime/library").Decimal;
             creditAmount: import("@prisma/client/runtime/library").Decimal;
+            notes: string | null;
         })[];
         total: number;
         page: number;
@@ -85,9 +85,9 @@ export declare class SalesController {
             name: string;
         };
         customer: {
+            id: number;
             name: string;
             phone: string | null;
-            id: number;
         } | null;
         credits: {
             id: number;
@@ -96,11 +96,11 @@ export declare class SalesController {
             shopId: number;
             customerId: number;
             notes: string | null;
-            dueDate: Date | null;
             saleId: number | null;
             amountTotal: import("@prisma/client/runtime/library").Decimal;
             amountPaid: import("@prisma/client/runtime/library").Decimal;
             amountRemaining: import("@prisma/client/runtime/library").Decimal;
+            dueDate: Date | null;
             status: import("@prisma/client").$Enums.CreditStatus;
         }[];
         items: ({
@@ -111,25 +111,25 @@ export declare class SalesController {
             };
         } & {
             id: number;
+            productId: number;
             quantity: import("@prisma/client/runtime/library").Decimal;
             unitPrice: import("@prisma/client/runtime/library").Decimal;
-            productId: number;
-            totalPrice: import("@prisma/client/runtime/library").Decimal;
             saleId: number;
+            totalPrice: import("@prisma/client/runtime/library").Decimal;
         })[];
     } & {
         id: number;
         createdAt: Date;
-        shopId: number;
         userId: number;
+        shopId: number;
         reference: string;
         customerId: number | null;
+        totalAmount: import("@prisma/client/runtime/library").Decimal;
+        discount: import("@prisma/client/runtime/library").Decimal;
+        netAmount: import("@prisma/client/runtime/library").Decimal;
         paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
         paidAmount: import("@prisma/client/runtime/library").Decimal;
-        discount: import("@prisma/client/runtime/library").Decimal;
-        notes: string | null;
-        totalAmount: import("@prisma/client/runtime/library").Decimal;
-        netAmount: import("@prisma/client/runtime/library").Decimal;
         creditAmount: import("@prisma/client/runtime/library").Decimal;
+        notes: string | null;
     }>;
 }

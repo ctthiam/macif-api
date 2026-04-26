@@ -5,9 +5,9 @@ export declare class CreditsService {
     constructor(prisma: PrismaService);
     findAll(shopId: number, customerId?: number): import("@prisma/client").Prisma.PrismaPromise<({
         customer: {
+            id: number;
             name: string;
             phone: string | null;
-            id: number;
         };
         payments: {
             id: number;
@@ -15,8 +15,8 @@ export declare class CreditsService {
             userId: number;
             note: string | null;
             paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
-            amount: import("@prisma/client/runtime/library").Decimal;
             creditId: number;
+            amount: import("@prisma/client/runtime/library").Decimal;
         }[];
     } & {
         id: number;
@@ -25,11 +25,11 @@ export declare class CreditsService {
         shopId: number;
         customerId: number;
         notes: string | null;
-        dueDate: Date | null;
         saleId: number | null;
         amountTotal: import("@prisma/client/runtime/library").Decimal;
         amountPaid: import("@prisma/client/runtime/library").Decimal;
         amountRemaining: import("@prisma/client/runtime/library").Decimal;
+        dueDate: Date | null;
         status: import("@prisma/client").$Enums.CreditStatus;
     })[]>;
     pay(shopId: number, userId: number, creditId: number, dto: PayCreditDto): Promise<{
@@ -39,11 +39,11 @@ export declare class CreditsService {
         shopId: number;
         customerId: number;
         notes: string | null;
-        dueDate: Date | null;
         saleId: number | null;
         amountTotal: import("@prisma/client/runtime/library").Decimal;
         amountPaid: import("@prisma/client/runtime/library").Decimal;
         amountRemaining: import("@prisma/client/runtime/library").Decimal;
+        dueDate: Date | null;
         status: import("@prisma/client").$Enums.CreditStatus;
     }>;
 }

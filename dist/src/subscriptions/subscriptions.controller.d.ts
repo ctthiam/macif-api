@@ -11,8 +11,8 @@ export declare class SubscriptionsController {
         lastSubscription: {
             id: number;
             createdAt: Date;
-            shopId: number;
             expiresAt: Date;
+            shopId: number;
             amount: import("@prisma/client/runtime/library").Decimal;
             paymentRef: string | null;
             startsAt: Date;
@@ -22,8 +22,8 @@ export declare class SubscriptionsController {
     getHistory(user: any): Promise<{
         id: number;
         createdAt: Date;
-        shopId: number;
         expiresAt: Date;
+        shopId: number;
         amount: import("@prisma/client/runtime/library").Decimal;
         paymentRef: string | null;
         startsAt: Date;

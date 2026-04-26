@@ -13,8 +13,8 @@ export declare class ReportsController {
         creditCount: number;
         lowStockCount: number;
         lowStockProducts: {
-            name: string;
             id: number;
+            name: string;
             unit: string;
             stockQty: import("@prisma/client/runtime/library").Decimal;
             stockAlert: import("@prisma/client/runtime/library").Decimal;
@@ -29,26 +29,26 @@ export declare class ReportsController {
                 };
             } & {
                 id: number;
+                productId: number;
                 quantity: import("@prisma/client/runtime/library").Decimal;
                 unitPrice: import("@prisma/client/runtime/library").Decimal;
-                productId: number;
-                totalPrice: import("@prisma/client/runtime/library").Decimal;
                 saleId: number;
+                totalPrice: import("@prisma/client/runtime/library").Decimal;
             })[];
         } & {
             id: number;
             createdAt: Date;
-            shopId: number;
             userId: number;
+            shopId: number;
             reference: string;
             customerId: number | null;
+            totalAmount: import("@prisma/client/runtime/library").Decimal;
+            discount: import("@prisma/client/runtime/library").Decimal;
+            netAmount: import("@prisma/client/runtime/library").Decimal;
             paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
             paidAmount: import("@prisma/client/runtime/library").Decimal;
-            discount: import("@prisma/client/runtime/library").Decimal;
-            notes: string | null;
-            totalAmount: import("@prisma/client/runtime/library").Decimal;
-            netAmount: import("@prisma/client/runtime/library").Decimal;
             creditAmount: import("@prisma/client/runtime/library").Decimal;
+            notes: string | null;
         })[];
     }>;
     getDaily(user: any, date?: string): Promise<{
@@ -64,36 +64,36 @@ export declare class ReportsController {
                 };
             } & {
                 id: number;
+                productId: number;
                 quantity: import("@prisma/client/runtime/library").Decimal;
                 unitPrice: import("@prisma/client/runtime/library").Decimal;
-                productId: number;
-                totalPrice: import("@prisma/client/runtime/library").Decimal;
                 saleId: number;
+                totalPrice: import("@prisma/client/runtime/library").Decimal;
             })[];
         } & {
             id: number;
             createdAt: Date;
-            shopId: number;
             userId: number;
+            shopId: number;
             reference: string;
             customerId: number | null;
+            totalAmount: import("@prisma/client/runtime/library").Decimal;
+            discount: import("@prisma/client/runtime/library").Decimal;
+            netAmount: import("@prisma/client/runtime/library").Decimal;
             paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
             paidAmount: import("@prisma/client/runtime/library").Decimal;
-            discount: import("@prisma/client/runtime/library").Decimal;
-            notes: string | null;
-            totalAmount: import("@prisma/client/runtime/library").Decimal;
-            netAmount: import("@prisma/client/runtime/library").Decimal;
             creditAmount: import("@prisma/client/runtime/library").Decimal;
+            notes: string | null;
         })[];
         expensesList: {
-            category: import("@prisma/client").$Enums.ExpenseCategory;
             id: number;
             createdAt: Date;
-            shopId: number;
             userId: number;
-            date: Date;
-            description: string | null;
+            shopId: number;
             amount: import("@prisma/client/runtime/library").Decimal;
+            date: Date;
+            category: import("@prisma/client").$Enums.ExpenseCategory;
+            description: string | null;
             isRecurring: boolean;
             recurDay: number | null;
         }[];
