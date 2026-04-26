@@ -1,0 +1,222 @@
+import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateSaleDto } from './dto/sale.dto';
+
+@Injectable()
+export class SalesService {
+  constructor(private prisma: PrismaService) {}
+
+  async create(shopId: number, userId: number, dto: CreateSaleDto) {
+    if (!dto.items?.length) throw new BadRequestException('Au moins un article requis');
+
+    // Vérification stock et récupération produits
+    const productIds = dto.items.map((i) => i.productId);
+    const products = await this.prisma.product.findMany({
+      where: { id: { in: productIds }, shopId, isActive: true, deletedAt: null },
+    });
+
+    if (products.length !== productIds.length) {
+      throw new BadRequestException('Un ou plusieurs produits sont introuvables');
+    }
+
+    const productMap = new Map(products.map((p) => [p.id, p]));
+
+    for (const item of dto.items) {
+      const product = productMap.get(item.productId)!;
+      if (Number(product.stockQty) < item.quantity) {
+        throw new BadRequestException(
+          `Stock insuffisant pour "${product.name}" (disponible: ${product.stockQty})`,
+        );
+      }
+    }
+
+    // Calculs
+    const totalAmount = dto.items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0);
+    const discount = dto.discount ?? 0;
+    const netAmount = totalAmount - discount;
+    const creditAmount =
+      dto.paymentMethod === 'credit' ? netAmount : Math.max(0, netAmount - dto.paidAmount);
+
+    const reference = await this.generateReference(shopId);
+
+    const sale = await this.prisma.$transaction(async (tx) => {
+      // Créer la vente
+      const newSale = await tx.sale.create({
+        data: {
+          shopId,
+          userId,
+          customerId: dto.customerId ?? null,
+          reference,
+          totalAmount,
+          discount,
+          netAmount,
+          paymentMethod: dto.paymentMethod as any,
+          paidAmount: dto.paidAmount,
+          creditAmount,
+          notes: dto.notes,
+          items: {
+            create: dto.items.map((item) => ({
+              productId: item.productId,
+              quantity: item.quantity,
+              unitPrice: item.unitPrice,
+              totalPrice: item.unitPrice * item.quantity,
+            })),
+          },
+        },
+        include: { items: { include: { product: { select: { name: true, unit: true } } } } },
+      });
+
+      // Mettre à jour le stock et créer les mouvements
+      for (const item of dto.items) {
+        const product = productMap.get(item.productId)!;
+        await tx.product.update({
+          where: { id: item.productId },
+          data: { stockQty: Number(product.stockQty) - item.quantity },
+        });
+
+        await tx.stockMovement.create({
+          data: {
+            shopId,
+            productId: item.productId,
+            type: 'sale',
+            quantity: -item.quantity,
+            unitPrice: item.unitPrice,
+            referenceType: 'sale',
+            referenceId: newSale.id,
+            userId,
+          },
+        });
+      }
+
+      // Créer le crédit si nécessaire
+      if (creditAmount > 0 && dto.customerId) {
+        const credit = await tx.credit.create({
+          data: {
+            shopId,
+            customerId: dto.customerId,
+            saleId: newSale.id,
+            amountTotal: creditAmount,
+            amountPaid: 0,
+            amountRemaining: creditAmount,
+            dueDate: dto.dueDate ? new Date(dto.dueDate) : null,
+            status: 'open',
+          },
+        });
+
+        // Mettre à jour le solde crédit du client
+        await tx.customer.update({
+          where: { id: dto.customerId },
+          data: {
+            creditBalance: { increment: creditAmount },
+            totalBought: { increment: netAmount },
+          },
+        });
+      } else if (dto.customerId) {
+        await tx.customer.update({
+          where: { id: dto.customerId },
+          data: { totalBought: { increment: netAmount } },
+        });
+      }
+
+      return newSale;
+    });
+
+    return sale;
+  }
+
+  async findAll(
+    shopId: number,
+    filters: {
+      startDate?: string;
+      endDate?: string;
+      paymentMethod?: string;
+      userId?: number;
+      limit?: number;
+      page?: number;
+    },
+  ) {
+    const where: any = { shopId };
+
+    if (filters.startDate || filters.endDate) {
+      where.createdAt = {};
+      if (filters.startDate) where.createdAt.gte = new Date(filters.startDate);
+      if (filters.endDate) {
+        const end = new Date(filters.endDate);
+        end.setHours(23, 59, 59, 999);
+        where.createdAt.lte = end;
+      }
+    }
+
+    if (filters.paymentMethod) where.paymentMethod = filters.paymentMethod;
+    if (filters.userId) where.userId = filters.userId;
+
+    const limit = filters.limit ?? 20;
+    const page = filters.page ?? 1;
+    const skip = (page - 1) * limit;
+
+    const [items, total] = await Promise.all([
+      this.prisma.sale.findMany({
+        where,
+        include: {
+          items: { include: { product: { select: { name: true, unit: true } } } },
+          customer: { select: { name: true, phone: true } },
+          user: { select: { name: true } },
+        },
+        orderBy: { createdAt: 'desc' },
+        take: limit,
+        skip,
+      }),
+      this.prisma.sale.count({ where }),
+    ]);
+
+    return { items, total, page, limit, pages: Math.ceil(total / limit) };
+  }
+
+  async findOne(shopId: number, id: number) {
+    const sale = await this.prisma.sale.findFirst({
+      where: { id, shopId },
+      include: {
+        items: { include: { product: { select: { name: true, unit: true, photoUrl: true } } } },
+        customer: { select: { id: true, name: true, phone: true } },
+        user: { select: { name: true } },
+        credits: true,
+      },
+    });
+    if (!sale) throw new NotFoundException('Vente introuvable');
+    return sale;
+  }
+
+  async getSummary(shopId: number, period: 'today' | 'week' | 'month') {
+    const now = new Date();
+    const start = new Date();
+
+    if (period === 'today') {
+      start.setHours(0, 0, 0, 0);
+    } else if (period === 'week') {
+      start.setDate(now.getDate() - 7);
+    } else {
+      start.setDate(1);
+      start.setHours(0, 0, 0, 0);
+    }
+
+    const sales = await this.prisma.sale.findMany({
+      where: { shopId, createdAt: { gte: start } },
+      select: { netAmount: true, paymentMethod: true },
+    });
+
+    const total = sales.reduce((s, v) => s + Number(v.netAmount), 0);
+    const byMethod: Record<string, number> = {};
+    sales.forEach((s) => {
+      byMethod[s.paymentMethod] = (byMethod[s.paymentMethod] ?? 0) + Number(s.netAmount);
+    });
+
+    return { total, count: sales.length, byMethod, period };
+  }
+
+  private async generateReference(shopId: number): Promise<string> {
+    const count = await this.prisma.sale.count({ where: { shopId } });
+    const year = new Date().getFullYear();
+    const num = String(count + 1).padStart(5, '0');
+    return `VTE-${year}-${num}`;
+  }
+}
