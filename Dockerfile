@@ -1,20 +1,28 @@
-FROM node:20-alpine AS builder
+FROM node:22-alpine
 WORKDIR /app
+
+# Invalide le cache à chaque déploiement
+ARG CACHEBUST=1
+
+# Mettre à jour les paquets Alpine pour réduire les CVEs
+RUN apk upgrade --no-cache
+
+# Installer toutes les dépendances (y compris devDeps nécessaires pour nest build)
 COPY package*.json ./
 RUN npm ci
+
+# Générer le client Prisma
 COPY prisma ./prisma
 RUN npx prisma generate
+
+# Copier le source et compiler TypeScript
 COPY . .
 RUN npm run build
 
-FROM node:20-alpine
-WORKDIR /app
+# Supprimer les devDependencies après le build
+RUN npm prune --omit=dev
+
 ENV NODE_ENV=production
-COPY package*.json ./
-RUN npm ci --omit=dev
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder /app/node_modules/@prisma/client ./node_modules/@prisma/client
-COPY prisma ./prisma
-COPY --from=builder /app/dist ./dist
 EXPOSE 4000
+
 CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
