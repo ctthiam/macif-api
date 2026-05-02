@@ -18,6 +18,20 @@ export declare class CustomersController {
         creditBalance: import("@prisma/client/runtime/library").Decimal;
     }[]>;
     findOne(user: any, id: number): Promise<{
+        credits: {
+            id: number;
+            createdAt: Date;
+            updatedAt: Date;
+            shopId: number;
+            customerId: number;
+            notes: string | null;
+            saleId: number | null;
+            amountTotal: import("@prisma/client/runtime/library").Decimal;
+            amountPaid: import("@prisma/client/runtime/library").Decimal;
+            amountRemaining: import("@prisma/client/runtime/library").Decimal;
+            dueDate: Date | null;
+            status: import("@prisma/client").$Enums.CreditStatus;
+        }[];
         sales: ({
             items: ({
                 product: {
@@ -46,20 +60,6 @@ export declare class CustomersController {
             creditAmount: import("@prisma/client/runtime/library").Decimal;
             notes: string | null;
         })[];
-        credits: {
-            id: number;
-            createdAt: Date;
-            updatedAt: Date;
-            shopId: number;
-            customerId: number;
-            notes: string | null;
-            saleId: number | null;
-            amountTotal: import("@prisma/client/runtime/library").Decimal;
-            amountPaid: import("@prisma/client/runtime/library").Decimal;
-            amountRemaining: import("@prisma/client/runtime/library").Decimal;
-            dueDate: Date | null;
-            status: import("@prisma/client").$Enums.CreditStatus;
-        }[];
     } & {
         id: number;
         name: string;

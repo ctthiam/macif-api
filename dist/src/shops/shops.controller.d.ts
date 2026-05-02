@@ -5,8 +5,8 @@ export declare class ShopsController {
     constructor(shops: ShopsService);
     getMyShop(user: any): Promise<{
         _count: {
-            customers: number;
             products: number;
+            customers: number;
         };
     } & {
         id: number;

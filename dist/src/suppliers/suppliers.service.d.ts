@@ -20,9 +20,6 @@ export declare class SuppliersService {
     })[]>;
     findOne(shopId: number, id: number): Promise<{
         purchases: ({
-            user: {
-                name: string;
-            };
             items: ({
                 product: {
                     name: string;
@@ -36,6 +33,9 @@ export declare class SuppliersService {
                 totalPrice: import("@prisma/client/runtime/library").Decimal;
                 purchaseId: number;
             })[];
+            user: {
+                name: string;
+            };
         } & {
             id: number;
             createdAt: Date;

@@ -13,9 +13,6 @@ export declare class PurchasesService {
                 id: number;
                 name: string;
             } | null;
-            user: {
-                name: string;
-            };
             items: ({
                 product: {
                     name: string;
@@ -29,6 +26,9 @@ export declare class PurchasesService {
                 totalPrice: import("@prisma/client/runtime/library").Decimal;
                 purchaseId: number;
             })[];
+            user: {
+                name: string;
+            };
         } & {
             id: number;
             createdAt: Date;
@@ -52,9 +52,6 @@ export declare class PurchasesService {
             name: string;
             phone: string | null;
         } | null;
-        user: {
-            name: string;
-        };
         items: ({
             product: {
                 name: string;
@@ -68,6 +65,9 @@ export declare class PurchasesService {
             totalPrice: import("@prisma/client/runtime/library").Decimal;
             purchaseId: number;
         })[];
+        user: {
+            name: string;
+        };
     } & {
         id: number;
         createdAt: Date;

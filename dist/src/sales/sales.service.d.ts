@@ -41,9 +41,6 @@ export declare class SalesService {
         page?: number;
     }): Promise<{
         items: ({
-            user: {
-                name: string;
-            };
             customer: {
                 name: string;
                 phone: string | null;
@@ -61,6 +58,9 @@ export declare class SalesService {
                 saleId: number;
                 totalPrice: import("@prisma/client/runtime/library").Decimal;
             })[];
+            user: {
+                name: string;
+            };
         } & {
             id: number;
             createdAt: Date;
@@ -82,14 +82,6 @@ export declare class SalesService {
         pages: number;
     }>;
     findOne(shopId: number, id: number): Promise<{
-        user: {
-            name: string;
-        };
-        customer: {
-            id: number;
-            name: string;
-            phone: string | null;
-        } | null;
         credits: {
             id: number;
             createdAt: Date;
@@ -104,6 +96,11 @@ export declare class SalesService {
             dueDate: Date | null;
             status: import("@prisma/client").$Enums.CreditStatus;
         }[];
+        customer: {
+            id: number;
+            name: string;
+            phone: string | null;
+        } | null;
         items: ({
             product: {
                 name: string;
@@ -118,6 +115,9 @@ export declare class SalesService {
             saleId: number;
             totalPrice: import("@prisma/client/runtime/library").Decimal;
         })[];
+        user: {
+            name: string;
+        };
     } & {
         id: number;
         createdAt: Date;

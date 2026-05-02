@@ -34,9 +34,6 @@ export declare class SalesController {
     }>;
     findAll(user: any, startDate?: string, endDate?: string, paymentMethod?: string, userId?: string, limit?: string, page?: string): Promise<{
         items: ({
-            user: {
-                name: string;
-            };
             customer: {
                 name: string;
                 phone: string | null;
@@ -54,6 +51,9 @@ export declare class SalesController {
                 saleId: number;
                 totalPrice: import("@prisma/client/runtime/library").Decimal;
             })[];
+            user: {
+                name: string;
+            };
         } & {
             id: number;
             createdAt: Date;
@@ -81,14 +81,6 @@ export declare class SalesController {
         period: "week" | "today" | "month";
     }>;
     findOne(user: any, id: number): Promise<{
-        user: {
-            name: string;
-        };
-        customer: {
-            id: number;
-            name: string;
-            phone: string | null;
-        } | null;
         credits: {
             id: number;
             createdAt: Date;
@@ -103,6 +95,11 @@ export declare class SalesController {
             dueDate: Date | null;
             status: import("@prisma/client").$Enums.CreditStatus;
         }[];
+        customer: {
+            id: number;
+            name: string;
+            phone: string | null;
+        } | null;
         items: ({
             product: {
                 name: string;
@@ -117,6 +114,9 @@ export declare class SalesController {
             saleId: number;
             totalPrice: import("@prisma/client/runtime/library").Decimal;
         })[];
+        user: {
+            name: string;
+        };
     } & {
         id: number;
         createdAt: Date;

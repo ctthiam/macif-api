@@ -5,8 +5,8 @@ export declare class ShopsService {
     constructor(prisma: PrismaService);
     getMyShop(shopId: number): Promise<{
         _count: {
-            customers: number;
             products: number;
+            customers: number;
         };
     } & {
         id: number;
