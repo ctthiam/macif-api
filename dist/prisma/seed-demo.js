@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
-const SHOP_ID = 1;
-const USER_ID = 1;
+const SHOP_ID = 2;
+const USER_ID = 2;
 function daysAgo(n, hour = 10, minute = 0) {
     const d = new Date();
     d.setDate(d.getDate() - n);

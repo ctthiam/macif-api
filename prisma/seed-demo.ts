@@ -6,8 +6,8 @@
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-const SHOP_ID = 1;
-const USER_ID = 1;
+const SHOP_ID = 2;
+const USER_ID = 2;
 
 function daysAgo(n: number, hour = 10, minute = 0): Date {
   const d = new Date();
